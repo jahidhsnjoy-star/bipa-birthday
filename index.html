@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d1d">
+
+<title>For Bipsssss | Project 12.10</title>
+
+<style>
+
+
+#password-screen {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 20%, #ffe1f0 0%, transparent 35%),
+        radial-gradient(circle at 85% 80%, #d9c5ff 0%, transparent 40%),
+        linear-gradient(135deg, #ffb6d5, #e6c8ff, #ffc5df);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999999;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Magical glowing stars */
+
+#password-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(circle, white 1.5px, transparent 2px),
+        radial-gradient(circle, #fff6fc 1px, transparent 2px);
+
+    background-size: 37px 37px, 61px 61px;
+    background-position: 0 0, 20px 25px;
+
+    opacity: 0.75;
+    animation: magicalStars 6s ease-in-out infinite alternate;
+
+    pointer-events: none;
+}
+
+/* Magical fairy dust */
+
+.fairy-dust {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+
+    background: white;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 15px #ffb6e1;
+
+    pointer-events: none;
+
+    animation: dustFloat 5s linear infinite;
+}
+
+@keyframes magicalStars {
+    from {
+        opacity: 0.3;
+        background-position: 0 0, 20px 25px;
+    }
+
+    to {
+        opacity: 0.9;
+        background-position: 18px 18px, 40px 45px;
+    }
+}
+
+@keyframes dustFloat {
+    0% {
+        transform: translateY(30px) scale(0.5);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-150px) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* ==============================
+   FLYING FAIRIES
+================================ */
+
+.fairy {
+    position: absolute;
+
+    z-index: 1;
+
+    font-size: clamp(35px, 5vw, 65px);
+
+    user-select: none;
+    pointer-events: none;
+
+    filter: drop-shadow(0 0 12px #ffffffc9);
+
+    animation: fairyFly 8s ease-in-out infinite;
+
+    will-change: transform;
+}
+
+.fairy1 {
+    top: 10%;
+    left: 8%;
+    animation-duration: 8s;
+}
+
+.fairy2 {
+    top: 15%;
+    right: 10%;
+    animation-duration: 10s;
+    animation-delay: -3s;
+}
+
+.fairy3 {
+    bottom: 12%;
+    left: 13%;
+    animation-duration: 9s;
+    animation-delay: -5s;
+}
+
+.fairy4 {
+    bottom: 10%;
+    right: 8%;
+    animation-duration: 7s;
+    animation-delay: -2s;
+}
+
+@keyframes fairyFly {
+    0% {
+        transform: translate(0, 0) rotate(-10deg);
+    }
+
+    25% {
+        transform: translate(25px, -25px) rotate(8deg);
+    }
+
+    50% {
+        transform: translate(5px, -50px) rotate(-5deg);
+    }
+
+    75% {
+        transform: translate(-20px, -20px) rotate(10deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(-10deg);
+    }
+}
+
+/* ==============================
+   PASSWORD CARD
+================================ */
+
+.password-box {
+    position: relative;
+    z-index: 2;
+
+    width: 85%;
+    max-width: 360px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 50px rgba(160, 80, 150, 0.2),
+        0 0 35px rgba(255, 255, 255, 0.4);
+
+    animation: cardAppear 1s ease both;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.password-icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+
+    animation: iconFloat 2s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+.password-box h2 {
+    color: #d94d91;
+    font-size: 25px;
+    margin: 5px 0 12px;
+}
+
+.password-box p {
+    color: #875276;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.password-box input {
+    width: 100%;
+    padding: 13px;
+
+    margin: 15px 0;
+
+    border: 1px solid #efb5d6;
+    border-radius: 13px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    color: #74405f;
+    font-size: 14px;
+
+    box-sizing: border-box;
+
+    transition: 0.3s;
+}
+
+.password-box input:focus {
+    border-color: #d76aa8;
+    box-shadow: 0 0 12px #f4b5db;
+}
+
+.password-box button {
+    background: linear-gradient(135deg, #ff6fae, #bd8bff);
+
+    color: white;
+
+    border: none;
+    padding: 13px 22px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    box-shadow: 0 6px 18px #d78acb66;
+
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.password-box button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 10px 25px #d78acb80;
+}
+
+.password-box button:active {
+    transform: scale(0.97);
+}
+
+#error-message {
+    color: #e34479 !important;
+    font-size: 13px !important;
+    min-height: 16px;
+    margin-bottom: 0;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 480px) {
+
+    .fairy {
+        font-size: 38px;
+    }
+
+    .fairy1 {
+        top: 8%;
+        left: 4%;
+    }
+
+    .fairy2 {
+        top: 9%;
+        right: 4%;
+    }
+
+    .fairy3 {
+        bottom: 7%;
+        left: 4%;
+    }
+
+    .fairy4 {
+        bottom: 7%;
+        right: 4%;
+    }
+
+    .password-box {
+        padding: 30px 20px;
+        width: 82%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fairy,
+    .fairy-dust,
+    #password-screen::before,
+    .password-box,
+    .password-icon {
+        animation: none !important;
+    }
+}
+
+/* ==============================
+   ORIGINAL WEBSITE STYLES
+================================ */
+
+:root {
+    --bg: #100d1d;
+    --panel: #1b162b;
+    --pink: #ff9ebd;
+    --lilac: #c5a8ff;
+    --cream: #fff4ee;
+    --muted: #c8bfd7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background:
+        radial-gradient(
+            ellipse at top,
+            #29203f 0%,
+            var(--bg) 58%
+        );
+
+    color: var(--cream);
+
+    font-family: ui-rounded, "Segoe UI", system-ui, sans-serif;
+
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+#stars {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    background: #fff;
+    border-radius: 50%;
+
+    opacity: 0.65;
+
+    animation: twinkle 2.8s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    50% {
+        opacity: 0.15;
+        transform: scale(0.6);
+    }
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+.scene {
+    display: none;
+
+    min-height: 100svh;
+
+    padding: 36px 18px 48px;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.scene.active {
+    display: flex;
+    animation: appear 0.7s ease both;
+}
+
+.content {
+    width: min(760px, 100%);
+    margin: auto;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.eyebrow {
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+
+    font-size: 0.72rem;
+    color: var(--lilac);
+    font-weight: 700;
+}
+
+h1, h2 {
+    line-height: 1.12;
+    margin: 14px 0 18px;
+    letter-spacing: -0.035em;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+}
+
+h2 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+p {
+    font-size: clamp(1rem, 2.8vw, 1.15rem);
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+.accent {
+    color: var(--pink);
+}
+
+.btn {
+    border: 0;
+    border-radius: 999px;
+
+    padding: 13px 22px;
+    margin: 10px 5px;
+
+    background: linear-gradient(
+        110deg,
+        var(--pink),
+        var(--lilac)
+    );
+
+    color: #21162c;
+    font-weight: 800;
+
+    box-shadow: 0 8px 28px #ff9ebd2b;
+
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid #ffffff3d;
+
+    color: var(--cream);
+
+    box-shadow: none;
+}
+
+.gift {
+    font-size: clamp(5rem, 18vw, 9rem);
+
+    display: inline-block;
+
+    filter: drop-shadow(0 0 25px #ff9ebd55);
+
+    animation: bob 2s ease-in-out infinite;
+
+    cursor: pointer;
+}
+
+@keyframes bob {
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+.pill {
+    display: inline-block;
+
+    border: 1px solid #ffffff20;
+    border-radius: 999px;
+
+    padding: 7px 12px;
+
+    color: var(--muted);
+    font-size: 0.8rem;
+
+    margin: 4px;
+}
+
+.gallery {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+    margin: 26px 0;
+}
+
+.photo-card {
+    background: #fff8f0;
+    color: #35253a;
+
+    padding: 9px 9px 15px;
+
+    transform: rotate(-2deg);
+
+    box-shadow: 0 12px 28px #0005;
+
+    border-radius: 3px;
+}
+
+.photo-card:nth-child(2) {
+    transform: rotate(2deg);
+    margin-top: 14px;
+}
+
+.photo-card:nth-child(3) {
+    transform: rotate(-1deg);
+    margin-top: 4px;
+}
+
+.photo-card img {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 3 / 4;
+
+    object-fit: cover;
+
+    background: linear-gradient(135deg, #4b345c, #d58eac);
+
+    color: #fff;
+}
+
+.photo-card .caption {
+    font-size: 0.78rem;
+
+    margin: 10px 3px 0;
+
+    color: #5d4962;
+    line-height: 1.4;
+}
+
+.note {
+    background: linear-gradient(145deg, #2a203b, #1b172b);
+
+    border: 1px solid #ffffff18;
+    border-radius: 24px;
+
+    padding: clamp(22px, 5vw, 42px);
+
+    text-align: left;
+
+    box-shadow: 0 20px 60px #0003;
+}
+
+.note p {
+    margin: 12px 0;
+}
+
+.letter {
+    font-family: Georgia, serif;
+    font-size: 1.08rem;
+}
+
+.codebox {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    text-align: left;
+
+    background: #0a0911;
+
+    border: 1px solid #ffffff1b;
+    border-radius: 18px;
+
+    padding: 20px;
+
+    line-height: 2;
+    color: #c9f7d5;
+
+    box-shadow: 0 15px 45px #0004;
+
+    overflow-wrap: anywhere;
+}
+
+.code-muted {
+    color: #9e91b6;
+}
+
+.code-pink {
+    color: #ff9ebd;
+}
+
+.code-lilac {
+    color: #c5a8ff;
+}
+
+.progress {
+    height: 6px;
+
+    background: #ffffff15;
+
+    border-radius: 9px;
+    overflow: hidden;
+
+    margin: 18px auto 0;
+
+    max-width: 280px;
+}
+
+.progress span {
+    display: block;
+
+    width: 0;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        var(--pink),
+        var(--lilac)
+    );
+
+    transition: width 1.5s;
+}
+
+.heart {
+    font-size: 2rem;
+
+    display: inline-block;
+
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.footer {
+    font-size: 0.75rem;
+    color: #9d91b1;
+    margin-top: 26px;
+}
+
+@media (max-width: 560px) {
+
+    .gallery {
+        gap: 8px;
+    }
+
+    .photo-card {
+        padding: 6px 6px 11px;
+    }
+
+    .photo-card .caption {
+        font-size: 0.68rem;
+    }
+
+    .scene {
+        padding: 26px 14px 36px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    body *,
+    body *::before,
+    body *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
+</style>
+
+<script>
+/* ==============================
+   PASSWORD FUNCTION
+================================ */
+
+function unlockWebsite() {
+
+    const password =
+        document.getElementById("site-password").value;
+
+    if (password === "zarinbipa12") {
+
+        const screen =
+            document.getElementById("password-screen");
+
+        screen.style.opacity = "0";
+        screen.style.transition = "opacity 0.7s ease";
+
+        setTimeout(function () {
+            screen.style.display = "none";
+        }, 700);
+
+    } else {
+
+        document.getElementById("error-message").textContent =
+            "Oops! That's not the magic key. Try again ❤️";
+
+        const box = document.querySelector(".password-box");
+
+        box.animate(
+            [
+                { transform: "translateX(0)" },
+                { transform: "translateX(-7px)" },
+                { transform: "translateX(7px)" },
+                { transform: "translateX(-5px)" },
+                { transform: "translateX(0)" }
+            ],
+            {
+                duration: 350,
+                easing: "ease-in-out"
+            }
+        );
+    }
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- ==============================
+     PASSWORD SCREEN
+================================ -->
+
+<div id="password-screen">
+
+    <!-- Four flying fairies -->
+
+    <div class="fairy fairy1" aria-hidden="true">🧚🏻‍♀️</div>
+    <div class="fairy fairy2" aria-hidden="true">🧚🏼‍♀️</div>
+    <div class="fairy fairy3" aria-hidden="true">🧚🏻‍♀️</div>
+    <div class="fairy fairy4" aria-hidden="true">🧚🏼‍♀️</div>
+
+    <!-- Password card -->
+
+    <div class="password-box">
+
+        <div class="password-icon">🧚🏻‍♀️</div>
+
+        <h2>🎁 A Special Surprise!</h2>
+
+        <p>
+            A little magic, a little effort...<br>
+            Someone made this just for you 🎀
+        </p>
+
+        <input
+            type="password"
+            id="site-password"
+            placeholder="🔒 Enter the secret password"
+            autocomplete="current-password"
+            onkeydown="if(event.key === 'Enter') unlockWebsite()"
+        >
+
+        <br>
+
+        <button onclick="unlockWebsite()">
+            Open Surprise 💖
+        </button>
+
+        <p id="error-message"></p>
+
+        <p style="font-size:12px; margin-top:18px;">
+            ✨ A magical surprise awaits you ✨
+        </p>
+
+    </div>
+
+</div>
+
+<!-- Original website stars -->
+
+<div id="stars" aria-hidden="true"></div>
+
+<main>
+
+<!-- ==============================
+     SCENE 1
+================================ -->
+
+<section class="scene active" id="s1">
+
+    <div class="content">
+
+        <div class="eyebrow">
+            Tik Tik Tik Tik Tik
+        </div>
+
+        <h1>
+            Hey, <span class="accent">Bipsssss</span>🧚🏻‍♀️
+        </h1>
+
+        <p>
+            You thought you'd get just another birthday call from me?<br>
+            Nahhh. Not this time. 😂<br>
+            Because I know I’ll never get to call you at 12:01.<br>
+            You’ll either be on a call with her or she’ll be by your side.<br>
+            So, I made a little corner of the internet just for you.
+        </p>
+
+        <p>
+            A few memories, a little chaos and some words I don't always say.<br>
+            Ready, Bipsssss?
+        </p>
+
+        <button class="btn" onclick="go(2)">
+            Unlock your surprise →
+        </button>
+
+        <div class="footer">
+            Don't expect an iPhone! 💀😂
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SCENE 2
+================================ -->
+
+<section class="scene" id="s2">
+
+    <div class="content">
+
+        <div class="eyebrow">
+            Open the gift
+        </div>
+
+        <div
+            class="gift"
+            role="button"
+            tabindex="0"
+            onclick="openGift()"
+            onkeydown="if(event.key==='Enter'||event.key===' ')openGift()"
+        >
+            🎁
+        </div>
+
+        <h2 id="giftTitle">
+            A little something for you, Bipsssss
+        </h2>
+
+        <p id="giftText">
+            Tap the gift. Don't be shy. 👀
+        </p>
+
+        <button class="btn" id="giftBtn" onclick="openGift()">
+            Open it ✨
+        </button>
+
+        <div>
+            <button class="btn secondary" onclick="go(3)">
+                Continue →
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SCENE 3
+================================ -->
+
+<section class="scene" id="s3">
+
+    <div class="content">
+
+        <div class="eyebrow">
+            .........
+        </div>
+
+        <h2>
+            A few little <span class="accent">memories</span> 📸
+        </h2>
+
+        <p>
+            some little frames. A few moments.
+            And a friendship that deserves its own gallery.
+        </p>
+
+        <div class="gallery">
+
+            <div class="photo-card">
+
+                <img src="photo1.jpeg" alt="First memory">
+
+                <div class="caption">
+                    Fly away into the sky with the balloons. 🎈. 🌷
+                </div>
+
+            </div>
+
+            <div class="photo-card">
+
+                <img src="photo2.jpeg" alt="Second memory">
+
+                <div class="caption">
+                    Proof that I am your friend. 😂
+                </div>
+
+            </div>
+
+            <div class="photo-card">
+
+                <img src="photo3.jpeg" alt="Third memory">
+
+                <div class="caption">
+                    The day I will never forget.🥺💔
+                </div>
+
+            </div>
+
+        </div>
+
+        <p class="pill">
+            আরেকটু সামনে যা, ছবি দেখা শেষ হলে…
+        </p>
+
+        <br>
+
+        <button class="btn" onclick="go(4)">
+            There's a note for you →
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SCENE 4
+================================ -->
+
+<section class="scene" id="s4">
+
+    <div class="content">
+
+        <div class="eyebrow">
+            No teasing for a moment
+        </div>
+
+        <h2>
+            Something I wanted you to know 💌
+        </h2>
+
+        <div class="note letter">
+
+            <p>হেইইই, বিপাাা! 🌷</p>
+
+            <p>
+                শুভ জন্মদিন! জন্মদিনের অনেক অনেক শুভেচ্ছা।
+                আশা করি, ভালো আছিস। আর ভালো তো থাকবিই,
+                এত সুন্দর করে একটা উইশ করলাম, ভালো না থাকলেও
+                এখন তো মন ভালো হয়ে যাওয়ার কথা!😂
+            </p>
+
+            <p>
+                যাই হোক, এই পেজে যেহেতু একটু সিরিয়াস কথা বলব,
+                তাই এবার সিরিয়াস কথাতেই আসি।
+            </p>
+
+            <p>
+                তুই আমার দেখা সেরা মেয়েদের মধ্যে একজন।
+                এতটা অ্যাকটিভ, এত গুণে গুণান্বিত আর এতটা ম্যাচিউর
+                একটা মেয়ে আমি খুব কমই দেখেছি। সত্যি বলতে,
+                আমি কখনো কারও কাছ থেকে খুব একটা পরামর্শ নিইনি।
+                নিজের যা ভালো মনে হয়েছে, বেশির ভাগ সময় সেটাই করেছি।
+                আর তুই একমাত্র জীব, যার কিছু কিছু পরামর্শ আমি
+                মন দিয়ে শুনেছি, যদিও সব সময় যে শুনি, তা কিন্তু না! 😆
+            </p>
+
+            <p>
+                যাই হোক, আশা করি, যেভাবেই হোক, আমাদের এই বন্ধুত্বটা
+                আজীবন টিকে থাকবে। তুই সব সময় এভাবেই আমাকে ভালো
+                পরামর্শ দিয়ে যাবি, আর আমিও চেষ্টা করব তোর পাশে থাকতে।
+                জীবনের পথচলায় এমন কিছু মানুষ থাকুক, যাদের সঙ্গে
+                নির্দ্বিধায় কথা বলা যায়, যাদের মতামতকে গুরুত্ব দেওয়া যায়,
+                আর যাদের সঙ্গে বন্ধুত্বটা সময়ের সঙ্গে আরও সুন্দর হয়ে ওঠে।
+                তুই আমার জীবনে তেমনই একজন মানুষ হয়ে থাকিস।
+            </p>
+
+            <p>
+                আর হ্যাঁ, একটা কথা! আমি সব সময় তোর পাশে আছি। ❤️
+                আমি তোর বন্ধু, আর পরিস্থিতি যেমনই হোক, নিজের জায়গা
+                থেকে সব সময় তোর পাশে থাকার চেষ্টা করব। হয়তো সব সময়
+                সবকিছু ঠিকঠাক করে দিতে পারব না, হয়তো সব সমস্যার
+                সমাধানও আমার জানা থাকবে না, কিন্তু তোর প্রয়োজনের সময়
+                পাশে থাকার চেষ্টাটুকু অন্তত করব।
+            </p>
+
+            <p>
+                আর আমাকে একটু অপমান-টোপমান করিস না, প্লিজ!
+                বিশেষ করে ওইসব ব্যাপার নিয়ে। বুঝিসই তো!
+                আর মেসেজের উত্তর তাড়াতাড়ি দিবি! কী, ১ কোটি বছর পর
+                সিন করিস!😒Tebrii, কোথাকার! 🙂‍↔️ 🤐😆
+            </p>
+
+            <p>
+                আবারও শুভ জন্মদিন, বিপাাা! 🥳💗 তোর জীবনের নতুন বছরটা
+                অনেক আনন্দ, প্রশান্তি, সাফল্য আর সুন্দর সুন্দর মুহূর্তে
+                ভরে উঠুক। তোর মুখের হাসিটা সব সময় অটুট থাকুক,
+                আর জীবনের প্রতিটি ধাপে তুই এমন মানুষদের পাশে পাস,
+                যারা তোকে বুঝবে, সম্মান করবে আর তোর ভালো থাকাটা
+                মন থেকে চাইবে।
+            </p>
+
+            <p>
+                ভালো থাকিস, হাসিখুশি থাকিস, আর সব সময় নিজের মতো থাকিস.
+                <span class="heart">❤️</span>
+            </p>
+
+            <p>
+                — Your not-so-ordinary friend 🗿🤌🏻
+            </p>
+
+        </div>
+
+        <button class="btn" onclick="go(5)">
+            Okay, back to being unserious →
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SCENE 5
+================================ -->
+
+<section class="scene" id="s5">
+
+    <div class="content">
+
+        <div class="eyebrow">
+            Certified Mental Approved 🤡
+        </div>
+
+        <h2>
+            Bipa — Version 24.0 🎀
+        </h2>
+
+        <div class="codebox">
+
+            <div>
+                <span class="code-muted">$</span>
+                $ starting birthday_mode...
+            </div>
+
+            <div>
+                Beauty check... PASSED ✨
+            </div>
+
+            <div>
+                <span class="code-pink">
+                    Brain.exe... OVERLOADED 🧠 100%
+                </span>
+            </div>
+
+            <div>
+                Checking friendship status...
+                <span class="code-lilac">
+                    VERIFIED ✓
+                </span>
+            </div>
+
+            <div>
+                Replying to messages... SERVER NOT FOUND 💀
+            </div>
+
+            <div>
+                <span class="code-pink">
+                    Friendship status... PERMANENT 🔒♾
+                </span>
+            </div>
+
+            <div>
+                Birthday girl status...
+                <span class="code-lilac">
+                    LEGENDARY ✨
+                </span>
+            </div>
+
+            <div class="progress">
+                <span id="bar"></span>
+            </div>
+
+            <div id="terminalEnd" class="code-muted">
+                Process completed without errors
+                (some silly problems remain 😂).
+            </div>
+
+        </div>
+
+        <p>
+            <span class="accent">Error 404:</span>
+            Ordinary birthday wishes not found.
+        </p>
+
+        <button class="btn" onclick="go(6)">
+            One last thing… →
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==============================
+     SCENE 6
+================================ -->
+
+<section class="scene" id="s6">
+
+    <div class="content">
+
+        <div class="eyebrow">
+            12 October
+        </div>
+
+        <div class="heart">
+            🌷
+        </div>
+
+        <h1>
+            Keep being <span class="accent">you.</span>
+        </h1>
+
+        <p>
+            I hope this year gives you new places to go,
+            new reasons to laugh, dreams that come true,
+            and people who remind you how much you matter.
+        </p>
+
+        <p>
+            Whatever life looks like in the years ahead,
+            I hope you look back on this chapter with a smile—
+            and that we get to make many more ridiculous
+            memories along the way.
+        </p>
+
+        <h2>
+            Happy Birthday, Bipsssss!
+            <span class="accent">❤️</span>
+        </h2>
+
+        <p>
+            To more laughter, more memories,
+            and more random conversations.
+        </p>
+
+        <button
+            class="btn"
+            onclick="confetti();this.textContent='Birthday happiness sent! 🎉'"
+        >
+            Send extra happiness 🎉
+        </button>
+
+        <button class="btn secondary" onclick="go(1)">
+            Replay the surprise ↺
+        </button>
+
+        <div class="footer">
+            End of surprise · Friendship status: still iconic.
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<script>
+/* ==============================
+   ORIGINAL WEBSITE JAVASCRIPT
+================================ */
+
+// Original background stars
+
+const stars = document.getElementById('stars');
+
+for (let i = 0; i < 95; i++) {
+
+    let s = document.createElement('i');
+
+    s.className = 'star';
+
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+
+    s.style.animationDelay = (Math.random() * 3) + 's';
+    s.style.opacity = (0.2 + Math.random() * 0.7);
+
+    stars.appendChild(s);
+}
+
+// Fairy dust particles
+
+const passwordScreen =
+    document.getElementById('password-screen');
+
+for (let i = 0; i < 24; i++) {
+
+    const dust = document.createElement('span');
+
+    dust.className = 'fairy-dust';
+
+    dust.style.left = Math.random() * 100 + '%';
+    dust.style.top = Math.random() * 100 + '%';
+
+    dust.style.animationDelay =
+        (Math.random() * 5) + 's';
+
+    dust.style.animationDuration =
+        (4 + Math.random() * 5) + 's';
+
+    passwordScreen.appendChild(dust);
+}
+
+// Scene navigation
+
+function go(n) {
+
+    document.querySelectorAll('.scene').forEach(function (x) {
+        x.classList.remove('active');
+    });
+
+    document.getElementById('s' + n).classList.add('active');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    if (n === 5) {
+
+        setTimeout(function () {
+            document.getElementById('bar').style.width = '100%';
+        }, 150);
+    }
+}
+
+// Gift animation
+
+let opened = false;
+
+function openGift() {
+
+    if (opened) return;
+
+    opened = true;
+
+    document.querySelector('.gift').textContent = '🎉';
+
+    document.getElementById('giftTitle').textContent =
+        'Surprise unlocked!';
+
+    document.getElementById('giftText').textContent =
+        'Wishing you a day full of cake, laughter, and zero unnecessary bugs. You deserve all the good things. 💗';
+
+    document.getElementById('giftBtn').textContent =
+        'Unlocked ✓';
+
+    confetti();
+}
+
+// Confetti animation
+
+function confetti() {
+
+    const emojis = ['✨', '💗', '🎉', '🌷', '⭐'];
+
+    for (let i = 0; i < 34; i++) {
+
+        let e = document.createElement('span');
+
+        e.textContent =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        e.style.position = 'fixed';
+        e.style.left = Math.random() * 100 + 'vw';
+        e.style.top = '-30px';
+
+        e.style.zIndex = '10';
+        e.style.fontSize = (16 + Math.random() * 18) + 'px';
+        e.style.pointerEvents = 'none';
+
+        document.body.appendChild(e);
+
+        let dx = (Math.random() - 0.5) * 180;
+
+        let duration = 1800 + Math.random() * 1800;
+
+        let anim = e.animate(
+            [
+                {
+                    transform: 'translate(0,0) rotate(0deg)',
+                    opacity: 1
+                },
+                {
+                    transform:
+                        `translate(${dx}px, ${window.innerHeight + 80}px) rotate(${Math.random() * 650}deg)`,
+                    opacity: 0
+                }
+            ],
+            {
+                duration: duration,
+                easing: 'cubic-bezier(.2,.7,.4,1)'
+            }
+        );
+
+        anim.onfinish = function () {
+            e.remove();
+        };
+    }
+}
+</script>
+
+</body>
+</html>
